@@ -11,7 +11,10 @@ namespace APIPets.Interfaces
         TipoDePet Cadastrar(TipoDePet a);
         List<TipoDePet> LerTodos();
         TipoDePet BuscarPorId(int id);
-        TipoDePet Alterar(TipoDePet a);
-        TipoDePet Excluir(TipoDePet a);
+        TipoDePet Alterar(int id, TipoDePet a);
+        void Excluir(int id);
+
+       
+        
     }
 }

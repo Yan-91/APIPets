@@ -16,37 +16,40 @@ namespace APIPets.Controllers
     {
 
         //Chamando o Repositorio Pet
-        TipoDePetRepository repo = new TipoDePetRepository();
+        TipoDePetRepository rep = new TipoDePetRepository();
         // GET: api/<TipoDePetController>
         [HttpGet]
         public List<TipoDePet> Get()
         {
-            return repo.LerTodos();
+            return rep.LerTodos();
         }
 
         // GET api/<TipoDePetController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public TipoDePet Get(int id)
         {
-            return repo.BuscarPorId();
+            return rep.BuscarPorId(id);
         }
 
         // POST api/<TipoDePetController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public TipoDePet Post([FromBody] TipoDePet a)
         {
+            return rep.Cadastrar(a);
         }
 
         // PUT api/<TipoDePetController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public TipoDePet Put(int id, [FromBody] TipoDePet a)
         {
+            return rep.Alterar(id, a);
         }
 
         // DELETE api/<TipoDePetController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            rep.Excluir(id);
         }
     }
 }

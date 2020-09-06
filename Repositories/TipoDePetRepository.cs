@@ -16,11 +16,23 @@ namespace APIPets.Repositories
         // Chamando o Comando que vai executar os comandos no banco
         SqlCommand cmd = new SqlCommand();
 
-        public TipoDePet Alterar(TipoDePet a)
+        public TipoDePet Alterar(int id,TipoDePet a)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+
+            //Colocando os Parametros
+            cmd.CommandText = "UPDATE TipoDePet SET Descricao = @descricao WHERE IdTipoDePet = @id";
+
+            cmd.Parameters.AddWithValue("@descricao", a.Descricao);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+            //encerrar Conexao
+            conexao.Desconectar();
+            return a;
         }
 
+       
         public TipoDePet BuscarPorId(int id)
         {
             cmd.Connection = conexao.Conectar();
@@ -41,19 +53,38 @@ namespace APIPets.Repositories
             return a;
         }
 
-        internal string BuscarPorId()
-        {
-            throw new NotImplementedException();
-        }
+  
 
         public TipoDePet Cadastrar(TipoDePet a)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+
+
+            cmd.CommandText =
+                "INSERT INTO TipoDePet (Descricao)" +
+                "VALUES" +
+                "(@descricao)";
+            cmd.Parameters.AddWithValue("@descricao", a.Descricao);
+
+            //Como é POST ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
+            return a;
+
         }
 
-        public TipoDePet Excluir(TipoDePet a)
+        public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+
+            //Mostrando que o Id tem que ser Deletado
+            cmd.CommandText = "DELETE FROM TipoDePet WHERE IdTipoDePet = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+            conexao.Desconectar();
+
+
+
         }
 
         public List<TipoDePet> LerTodos()
