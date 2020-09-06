@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0OjxLKOA15boicyG50zNnKhOeryapvhnYC7Qb3Gdq6R8hY6KNaTJphnw2AyR2EgvHMnmYowC9/QDqBDZTSM3Ew==",
+  "dgSpecHash": "ClesoNqI8plQ+FxtmyNwhab/Gkju0ZbjP4fzASokrVv/DcT1KyBi3eH8K2pyQGuAB9CBMvaEdEoDGKKLQgbeBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yan\\source\\repos\\APIPets\\APIPets.csproj",
+  "projectFilePath": "C:\\Users\\Yan\\Documents\\ApiYan2\\APIPets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yan\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Yan\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

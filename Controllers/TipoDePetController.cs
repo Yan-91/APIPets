@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIPets.Domains;
 using APIPets.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,16 +19,16 @@ namespace APIPets.Controllers
         TipoDePetRepository repo = new TipoDePetRepository();
         // GET: api/<TipoDePetController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<TipoDePet> Get()
         {
-            return new string[] { "value1", "value2" };
+            return repo.LerTodos();
         }
 
         // GET api/<TipoDePetController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return repo.BuscarPorId();
         }
 
         // POST api/<TipoDePetController>
