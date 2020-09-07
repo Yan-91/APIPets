@@ -9,67 +9,63 @@ using System.Threading.Tasks;
 
 namespace APIPets.Repositories
 {
-    public class TipoDePetRepository : ITipoDePet
+    public class RacaRepository : IRaca
     {
         //Conectando com o banco
         PetContext conexao = new PetContext();
         // Chamando o Comando que vai executar os comandos no banco
         SqlCommand cmd = new SqlCommand();
 
-        public TipoDePet Alterar(int id,TipoDePet a)
+        public Raca Alterar(int id, Raca d)
         {
             cmd.Connection = conexao.Conectar();
 
             //Colocando os Parametros
-            cmd.CommandText = "UPDATE TipoDePet SET Descricao = @descricao WHERE IdTipoDePet = @id";
+            cmd.CommandText = "UPDATE Raca SET Descricao = @descricao WHERE IdRaca = @id";
 
-            cmd.Parameters.AddWithValue("@descricao", a.Descricao);
+            cmd.Parameters.AddWithValue("@descricao", d.Descricao);
             cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
             //encerrar Conexao
             conexao.Desconectar();
-            return a;
+            return d;
         }
 
-       
-        public TipoDePet BuscarPorId(int id)
+        public Raca BuscarPorId(int id)
         {
             cmd.Connection = conexao.Conectar();
             //SELECT por Id
-            cmd.CommandText = "SELECT * FROM TipoDePet WHERE IdTipoDePet = @id";
+            cmd.CommandText = "SELECT * FROM Raca WHERE IdRaca = @id";
             // ID = @id!
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader dados = cmd.ExecuteReader();
 
-            TipoDePet a = new TipoDePet();
+            Raca d = new Raca();
             while (dados.Read())
             {
-                a.IdTipoDePet   = Convert.ToInt32(dados.GetValue(0));
-                a.Descricao     = dados.GetValue(1).ToString();
+                d.IdRaca    = Convert.ToInt32(dados.GetValue(0));
+                d.Descricao = dados.GetValue(1).ToString();
             }
             conexao.Desconectar();
-            return a;
+            return d;
         }
 
-  
-
-        public TipoDePet Cadastrar(TipoDePet a)
+        public Raca Cadastrar(Raca d)
         {
             cmd.Connection = conexao.Conectar();
 
 
             cmd.CommandText =
-                "INSERT INTO TipoDePet (Descricao)" +
+                "INSERT INTO Raca (Descricao)" +
                 "VALUES" +
                 "(@descricao)";
-            cmd.Parameters.AddWithValue("@descricao", a.Descricao);
+            cmd.Parameters.AddWithValue("@descricao", d.Descricao);
 
             //Como é POST ExecuteNonQuery();
             cmd.ExecuteNonQuery();
-            return a;
-
+            return d;
         }
 
         public void Excluir(int id)
@@ -77,42 +73,37 @@ namespace APIPets.Repositories
             cmd.Connection = conexao.Conectar();
 
             //Mostrando que o Id tem que ser Deletado
-            cmd.CommandText = "DELETE FROM TipoDePet WHERE IdTipoDePet = @id";
+            cmd.CommandText = "DELETE FROM Raca WHERE IdRaca = @id";
             cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
             conexao.Desconectar();
 
 
-
         }
 
-        public List<TipoDePet> LerTodos()
+        public List<Raca> LerTodos()
         {
             // Colocando A conexão com o banco
             cmd.Connection = conexao.Conectar();
-            cmd.CommandText = "SELECT * FROM TipoDePet";
+            cmd.CommandText = "SELECT * FROM Raca";
 
             SqlDataReader dados = cmd.ExecuteReader();
-
-            //Lista para guardar os Tipos de Pet
-            List<TipoDePet> tipoDePets = new List<TipoDePet>();
-
-            //Fazendo o laço
+            //Lista para guardar as Raças
+            List<Raca> racas = new List<Raca>();
+            //Fazendo o Laço
             while (dados.Read())
             {
-                tipoDePets.Add(
-                    new TipoDePet()
+                racas.Add(
+                    new Raca()
                     {
-                        IdTipoDePet = Convert.ToInt32(dados.GetValue(0)),
+                        IdRaca    = Convert.ToInt32(dados.GetValue(0)),
                         Descricao = dados.GetValue(1).ToString(),
                     }
-                    );
-
-            }
-            // Conexão Fechada
+             );
+             }
             conexao.Desconectar();
-            return tipoDePets;
+            return racas;
         }
     }
 }

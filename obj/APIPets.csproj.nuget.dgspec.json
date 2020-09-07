@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yan\\Documents\\API_Yan\\APIPets1\\APIPets.csproj": {}
+    "C:\\Users\\Yan\\Documents\\API_Yan\\API_Pets\\APIPets.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yan\\Documents\\API_Yan\\APIPets1\\APIPets.csproj": {
+    "C:\\Users\\Yan\\Documents\\API_Yan\\API_Pets\\APIPets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yan\\Documents\\API_Yan\\APIPets1\\APIPets.csproj",
+        "projectUniqueName": "C:\\Users\\Yan\\Documents\\API_Yan\\API_Pets\\APIPets.csproj",
         "projectName": "APIPets",
-        "projectPath": "C:\\Users\\Yan\\Documents\\API_Yan\\APIPets1\\APIPets.csproj",
+        "projectPath": "C:\\Users\\Yan\\Documents\\API_Yan\\API_Pets\\APIPets.csproj",
         "packagesPath": "C:\\Users\\Yan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yan\\Documents\\API_Yan\\APIPets1\\obj\\",
+        "outputPath": "C:\\Users\\Yan\\Documents\\API_Yan\\API_Pets\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yan\\AppData\\Roaming\\NuGet\\NuGet.Config",
